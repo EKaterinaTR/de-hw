@@ -1,13 +1,18 @@
 services:
   db:
-    image: postgres:13.1-alpine
+    image: postgres:latest
     restart: always
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-         - "5432:5432"
+         - "5552:5432"
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
   metabase:
     image: metabase/metabase:latest
